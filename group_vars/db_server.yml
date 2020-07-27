@@ -70,3 +70,8 @@ databases:
     user: 'ranger'
     pass: 'ranger_password'
     type: '{{ database_type }}'
+  nifireg:
+    name: 'nifireg'
+    user: 'nifireg'
+    pass: 'nifireg_pass'
+    type: '{{ database_type }}'
