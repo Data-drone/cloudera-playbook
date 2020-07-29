@@ -1,28 +1,18 @@
 {
   "refName": "NIFIREGISTRY-1",
   "serviceType": "NIFIREGISTRY",
-  "serviceConfigs": [],
+  "serviceConfigs": [
+    {
+      "name": "kerberos.auth.enabled",
+      "value": "true"
+    }
+  ],
   "roleConfigGroups": [
      {
       "refName" : "NIFIREGISTRY-1-NIFI_REGISTRY_SERVER-BASE",
       "roleType" : "NIFI_REGISTRY_SERVER",
       "configs": [
-        {
-          "name": "nifi.registry.db.url",
-          "value": "jdbc:mysql://{{ hostvars[db_hostname]['inventory_hostname'] }}/nifireg"
-        }, {
-          "name": "nifi.registry.db.driver.class",
-          "value": "com.mysql.jdbc.Driver"
-        }, {
-          "name": "nifi.registry.db.driver.directory",
-          "value": "/usr/share/java/"
-        }, {
-          "name": "nifi.registry.db.username",
-          "value": "{{ databases.nifireg.user }}"
-        }, {
-          "name": "nifi.registry.db.password",
-          "value": "{{ databases.nifireg.pass }}"
-        }
+        
       ],
       "base": true
     }

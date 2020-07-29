@@ -3,23 +3,23 @@
   "serviceType": "KAFKA",
   "serviceConfigs": [
       {
-          "name": "kerberos.auth.enable",
-          "value": "true"
+        "name": "kerberos.auth.enable",
+        "value": "true"
       },
       {
-          "name": "zookeeper.chroot",
-          "value": "/kafka"
+        "name": "zookeeper.chroot",
+        "value": "/kafka"
       },
       {
-          "name": "producer.metrics.enable",
-          "value": "true"
+        "name": "producer.metrics.enable",
+        "value": "true"
       }
   ],
   "roleConfigGroups": [
       {
-          "refName": "KAFKA-1-BROKER-BASE",
-          "roleType": "KAFKA_BROKER",
-          "base": true
+        "refName": "KAFKA-1-BROKER-BASE",
+        "roleType": "KAFKA_BROKER",
+        "base": true
       }
   ]
 }

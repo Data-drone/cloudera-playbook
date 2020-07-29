@@ -41,3 +41,7 @@ cdh_services:
   - type: nifiregistry
 
   - type: kafka
+
+  - type: smm
+
+  - type: schemaregistry
