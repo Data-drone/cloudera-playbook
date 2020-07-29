@@ -4,7 +4,7 @@
   "serviceConfigs": [
     {
       "name": "kerberos.auth.enable",
-      "value": "true"
+      "value": "false"
     }, {
       "name": "cm.metrics.host",
       "value": "{{ hostvars[scm_hostname]['inventory_hostname'] }}"
@@ -32,7 +32,7 @@
           "value": "{{ databases.streamsmsgmgr.pass }}"
         }, {
           "name" : "streams.messaging.manager.schema.registry.url",
-          "value" : "http://localhost:7788/api/v1"
+          "value" : "http://{{ hostvars[cdf_admin_hostname]['inventory_hostname'] }}:7788/api/v1"
         }
       ],
       "base": true

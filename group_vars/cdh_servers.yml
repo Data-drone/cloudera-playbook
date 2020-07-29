@@ -2,6 +2,7 @@
 
 db_hostname: "{{ hostvars[groups['db_server'][0]]['inventory_hostname'] }}"
 scm_hostname: "{{ hostvars[groups['scm_server'][0]]['inventory_hostname'] }}"
+cdf_admin_hostname: "{{ hostvars[groups['cdf_admin'][0]]['inventory_hostname'] }}"
 
 cluster_display_name: cluster_1
 
