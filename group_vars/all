@@ -52,6 +52,10 @@ cluster_version_cm:  6.3.1
 # Version of CDS Powered by Apache Spark (note: not installed if CDH6/7 is also selected)
 cluster_version_cds: 2.4.0.cloudera2
 
+# CFM version to install
+cfm_version: 1.0.1.0
+csm_version: 2.0.1.0
+
 # Helper variables for major and minor versions
 cluster_version_cdh_major: "{{ cluster_version_cdh.split('.')[0] }}"
 cluster_version_cdh_minor: "{{ cluster_version_cdh.split('.')[1] }}"
@@ -77,6 +81,19 @@ configs_by_version:
     scm_repo_gpgkey: "{{ cloudera_archive_protocol }}{{ cloudera_archive }}/cm6/{{ cluster_version_cm }}/redhat{{ ansible_distribution_major_version }}/yum/RPM-GPG-KEY-cloudera"
     scm_parcel_repositories: 
       - "{{ cloudera_archive_protocol }}{{ cloudera_archive }}/cdh6/{{ cluster_version_cdh }}/parcels"
+      #- "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/p/CFM/centos7/1.x/updates/{{ cfm_version }}/tars/parcel"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/CFM/parcels/{{ cfm_version }}"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/vault/CSP/parcels/{{ csm_version }}"
+    scm_csds:
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/CFM/csd/{{ cfm_version }}/NIFI-1.9.0.1.0.1.0-12.jar"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/CFM/csd/{{ cfm_version }}/NIFICA-1.9.0.1.0.1.0-12.jar"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/CFM/csd/{{ cfm_version }}/NIFIREGISTRY-0.3.0.1.0.1.0-12.jar"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/vault/CSP/csd/{{ csm_version }}/SCHEMAREGISTRY-0.8.0.jar"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/vault/CSP/csd/{{ csm_version }}/STREAMS_REPLICATION_MANAGER-1.0.0.jar"
+      #- "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/p/CFM/centos7/1.x/updates/{{ cfm_version }}/tars/parcel/NIFI-1.11.4.1.1.0.0-119.jar"
+      #- "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/p/CFM/centos7/1.x/updates/{{ cfm_version }}/tars/parcel/NIFICA-1.11.4.1.1.0.0-119.jar"
+      #- "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/p/CFM/centos7/1.x/updates/{{ cfm_version }}/tars/parcel/NIFIREGISTRY-0.6.0.1.1.0.0-119.jar"
+      - "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/vault/CSP/csd/{{ csm_version }}/STREAMS_MESSAGING_MANAGER-2.1.0.jar"
     scm_prepare_database_script_path: "/opt/cloudera/cm/schema/scm_prepare_database.sh"
   "7":
     scm_repo_url:    "{{ cloudera_archive_protocol }}{{ cloudera_archive_authn }}@{{ cloudera_archive }}/p/cm7/{{ cluster_version_cm }}/redhat{{ ansible_distribution_major_version }}/yum"
