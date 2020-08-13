@@ -64,7 +64,7 @@ cluster_version_cm_minor: "{{ cluster_version_cm.split('.')[1] }}"
 
 cloudera_archive_protocol: https://
 cloudera_archive: archive.cloudera.com
-cloudera_archive_authn: ""
+# cloudera_archive_authn: ""
 
 configs_by_version:
   "5":
@@ -123,3 +123,17 @@ java_rpm_location: /tmp/jdk-8u181-linux-x64.rpm
 java_rpm_remote_src: no
 java_jce_location: /tmp/jce_policy-8.zip
 java_jce_remote_src: no
+
+## -----
+## Add TLS
+## -----
+
+
+ca_dir: /opt/cloudera/security/ca 
+ca_key: "{{ ca_dir }}/ca-key.pem"
+ca_key_password: supersecret1
+root_pem: "{{ ca_dir }}/ca-cert.pem"
+ca_conf: "{{ ca_dir }}/openssl.cnf"
+ca_email=admin@cloudera.com
+
+
