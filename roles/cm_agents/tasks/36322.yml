@@ -151,3 +151,12 @@
     home: /var/lib/zookeeper
     shell: /sbin/nologin
     system: yes
+
+- name: Create user 'kafka'
+  user:
+    name: kafka
+    groups:
+    - kafka
+    home: /var/lib/kafka
+    shell: /sbin/nologin
+    system: yes

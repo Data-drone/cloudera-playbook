@@ -70,3 +70,18 @@ databases:
     user: 'ranger'
     pass: 'ranger_password'
     type: '{{ database_type }}'
+  nifireg:
+    name: 'nifireg'
+    user: 'nifireg'
+    pass: 'nifireg_pass'
+    type: '{{ database_type }}'
+  schemaregistry:
+    name: 'schemaregistry'
+    user: 'schemaregistry'
+    pass: 'schemaregistry_pass'
+    type: '{{ database_type }}'
+  streamsmsgmgr:
+    name: 'streamsmsgmgr'
+    user: 'streamsmsgmgr'
+    pass: 'streamsmsgmgr_pass'
+    type: '{{ database_type }}'

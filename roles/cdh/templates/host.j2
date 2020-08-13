@@ -79,4 +79,25 @@
     "SPARK2_ON_YARN-1-GATEWAY-BASE",
     {% endif %}
     "YARN-1-NODEMANAGER-BASE" ]
-} ]
+} 
+{% if groups['cdf_servers'] is defined and (groups['cdf_servers'] | length>0) %}
+,{
+  "refName": "HostTemplate-CDF",
+  "cardinality": 3,
+  "roleConfigGroupsRefNames": [
+    "NIFI-1-NIFI_NODE-BASE",
+    "KAFKA-1-BROKER-BASE" ]
+}
+{% endif %}
+{% if groups['cdf_admin'] is defined and (groups['cdf_admin'] | length>0) %}
+,{
+  "refName": "HostTemplate-CDFAdmin",
+  "cardinality": 1,
+  "roleConfigGroupsRefNames": [
+    "NIFIREGISTRY-1-NIFI_REGISTRY_SERVER-BASE",
+    "SCHEMAREGISTRY-SCHEMA_REGISTRY_SERVER-BASE",
+    "STREAMS_MESSAGING_MANAGER-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
+    "STREAMS_MESSAGING_MANAGER-STREAMS_MESSAGING_MANAGER_UI-BASE" ]
+}
+{% endif %} 
+]

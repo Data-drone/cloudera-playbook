@@ -1,0 +1,27 @@
+{
+  "refName": "NIFI-1",
+  "serviceType": "NIFI",
+  "serviceConfigs": [
+      {
+          "name": "zookeeper_service",
+          "ref": "ZOOKEEPER-1"
+      },
+      {
+        "name": "kerberos.auth.enabled",
+        "value": "true"
+      }
+  ],
+  "roleConfigGroups": [
+      {
+          "refName": "NIFI-1-NIFI_NODE-BASE",
+          "roleType": "NIFI_NODE",
+          "configs": [
+            {
+                "name": "nifi.cluster.flow.election.max.candidates",
+                "value": "{{ groups['cdf_servers'] | length }}"
+            }
+          ],
+          "base": true
+      }
+  ]
+}

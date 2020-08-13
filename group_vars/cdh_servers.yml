@@ -2,6 +2,7 @@
 
 db_hostname: "{{ hostvars[groups['db_server'][0]]['inventory_hostname'] }}"
 scm_hostname: "{{ hostvars[groups['scm_server'][0]]['inventory_hostname'] }}"
+cdf_admin_hostname: "{{ hostvars[groups['cdf_admin'][0]]['inventory_hostname'] }}"
 
 cluster_display_name: cluster_1
 
@@ -35,3 +36,13 @@ cdh_services:
     yarn_nodemanager_log_dirs: /var/log/nm
 
   - type: zookeeper
+
+  - type: nifi
+
+  - type: nifiregistry
+
+  - type: kafka
+
+  - type: smm
+
+  - type: schemaregistry

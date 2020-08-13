@@ -1,0 +1,50 @@
+{
+  "refName": "STREAMS_MESSAGING_MANAGER",
+  "serviceType": "STREAMS_MESSAGING_MANAGER",
+  "serviceConfigs": [
+    {
+      "name": "kerberos.auth.enable",
+      "value": "false"
+    }, {
+      "name": "cm.metrics.host",
+      "value": "{{ hostvars[scm_hostname]['inventory_hostname'] }}"
+    }, {
+      "name": "cm.metrics.password",
+      "value": "{{ scm_default_pass }}"
+    }, {
+      "name" : "cm.metrics.service.name",
+      "value" : "kafka"
+    }
+  ],
+  "roleConfigGroups": [
+    {
+      "refName": "STREAMS_MESSAGING_MANAGER-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
+      "roleType": "STREAMS_MESSAGING_MANAGER_SERVER",
+      "configs": [
+        {
+          "name": "streams.messaging.manager.storage.connector.connectURI",
+          "value": "jdbc:mysql://{{ hostvars[db_hostname]['inventory_hostname'] }}/{{ databases.streamsmsgmgr.name }}"
+        }, {
+          "name": "streams.messaging.manager.storage.connector.user",
+          "value": "{{ databases.streamsmsgmgr.user }}"  
+        }, {
+          "name": "streams.messaging.manager.storage.connector.password",
+          "value": "{{ databases.streamsmsgmgr.pass }}"
+        }, {
+          "name" : "streams.messaging.manager.schema.registry.url",
+          "value" : "http://{{ hostvars[cdf_admin_hostname]['inventory_hostname'] }}:7788/api/v1"
+        }, {
+          "name" : "streams.messaging.manager.kafka.client.security.protocol",
+          "value" : "SASL_PLAINTEXT"
+        }
+      ],
+      "base": true
+    }, {
+      "refName": "STREAMS_MESSAGING_MANAGER-STREAMS_MESSAGING_MANAGER_UI-BASE",
+      "roleType": "STREAMS_MESSAGING_MANAGER_UI",
+      "configs": [],
+      "base": true
+    }
+        
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "refName": "SCHEMAREGISTRY",
+  "serviceType": "SCHEMAREGISTRY",
+  "serviceConfigs": [
+    {
+      "name": "kerberos.auth.enable",
+      "value": "false"
+    }, {
+      "name": "zookeeper_service",
+      "ref": "ZOOKEEPER-1"
+    }
+  ],
+  "roleConfigGroups": [
+    {
+      "refName": "SCHEMAREGISTRY-SCHEMA_REGISTRY_SERVER-BASE",
+      "roleType": "SCHEMA_REGISTRY_SERVER",
+      "configs": [
+          {
+            "name": "schema.registry.storage.connector.connectURI",
+            "value": "jdbc:mysql://{{ hostvars[db_hostname]['inventory_hostname'] }}/{{ databases.schemaregistry.name }}"
+          }, {
+            "name": "schema.registry.storage.connector.user",
+            "value": "{{ databases.schemaregistry.user }}"
+          }, {
+            "name": "schema.registry.storage.connector.password",
+            "value": "{{ databases.schemaregistry.pass }}"
+          }
+      ],
+      "base": true
+    }
+  ]
+}
